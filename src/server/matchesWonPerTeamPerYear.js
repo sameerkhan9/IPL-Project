@@ -1,34 +1,35 @@
 const fs = require('fs');
 
 function matchesWonPerTeamPerYear(matches) {
-    const matchesWon = {};
     
-    for (let i = 0; i < matches.length; i++) {
+    const matchesWonPerTeamPerYear = {};
+    
+    for (let index = 0; index < matches.length; index++) {
 
-        if (matches[i].result == 'normal') {
+        if (matches[index].result == 'normal') {
 
-            if (matchesWon[matches[i].winner] == undefined) {
+            if (matchesWonPerTeamPerYear[matches[index].winner] == undefined) {
 
-                matchesWon[matches[i].winner] = {};
-                matchesWon[matches[i].winner][matches[i].season] = 1;
+                matchesWonPerTeamPerYear[matches[index].winner] = {};
+                matchesWonPerTeamPerYear[matches[index].winner][matches[index].season] = 1;
 
             }
-            else if (matchesWon[matches[i].winner][matches[i].season] == undefined) {
+            else if (matchesWonPerTeamPerYear[matches[index].winner][matches[index].season] == undefined) {
 
-                matchesWon[matches[i].winner][matches[i].season] = 1;
+                matchesWonPerTeamPerYear[matches[index].winner][matches[index].season] = 1;
 
             }
             else {
-                matchesWon[matches[i].winner][matches[i].season] += 1;
+                matchesWonPerTeamPerYear[matches[index].winner][matches[index].season] += 1;
             }
 
         }
 
     }
     
-    fs.writeFile('./src/public/output/matchesWonPerTeamPerYear.json', JSON.stringify(matchesWon, null, 4), 'utf-8', (err) => {
-        if (err) {
-            console.log(err);
+    fs.writeFile('./src/public/output/matchesWonPerTeamPerYearPerTeamPerYear.json', JSON.stringify(matchesWonPerTeamPerYear, null, 4), 'utf-8', (error) => {
+        if (error) {
+            console.log(error);
         }
     });
 }
