@@ -1,13 +1,11 @@
-const CSVToJSON = require('csvtojson');
+const csvToJson = require('csvtojson');
 const fs = require('fs');
 const ipl = require('./ipl.js');
 
-CSVToJSON().fromFile('./src/data/matches.csv')
+csvToJson().fromFile('./src/data/matches.csv')
     .then(matches => {
-        
 
-
-            CSVToJSON().fromFile('./src/data/deliveries.csv')
+            csvToJson().fromFile('./src/data/deliveries.csv')
                 .then(deliveries => {
                 
                         iplFunctions(matches, deliveries);
