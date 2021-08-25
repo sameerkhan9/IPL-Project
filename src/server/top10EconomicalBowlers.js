@@ -2,44 +2,53 @@ const fs = require('fs');
 
 function top10EconomicalBowlers(matches, deliveries) {
 
-    function match_id2015() {
+    function matchId2015() {
+
         const idsYear2015 = new Set();
 
-        for (let i = 0; i < matches.length; i++) {
+        for (let index = 0; index < matches.length; index++) {
 
 
-            if (matches[i].season == '2015') {
-                idsYear2015.add(matches[i]["id"]);
+            if (matches[index].season == '2015') {
+                idsYear2015.add(matches[index]["id"]);
             }
+
         }
         return idsYear2015;
     }
-    const idsYear2015 = match_id2015();
+    const idsYear2015 = matchId2015();
 
     const bowlersStats = {};
 
-    for (let i = 0; i < deliveries.length; i++) {
-        if (idsYear2015.has(deliveries[i]["match_id"])) {
+    for (let index = 0; index < deliveries.length; index++) {
 
-            if (bowlersStats[deliveries[i].bowler] == undefined) {
-                bowlersStats[deliveries[i].bowler] = {};
-                if (deliveries[i]["noball_runs"] == "0" && deliveries[i]["noball_runs"] == "0") {
-                    bowlersStats[deliveries[i].bowler]["bowls"] = 1;
+        if (idsYear2015.has(deliveries[index]["match_id"])) {
+
+            if (bowlersStats[deliveries[index].bowler] == undefined) {
+
+                bowlersStats[deliveries[index].bowler] = {};
+
+                if (deliveries[index]["noball_runs"] == "0" && deliveries[index]["noball_runs"] == "0") {
+
+                    bowlersStats[deliveries[index].bowler]["bowls"] = 1;
+
                 }
-                bowlersStats[deliveries[i].bowler]["runs"] = parseInt(deliveries[i]["wide_runs"]) + parseInt(deliveries[i]["noball_runs"]) + parseInt(deliveries[i]["batsman_runs"]);
+                bowlersStats[deliveries[index].bowler]["runs"] = parseInt(deliveries[index]["wide_runs"]) + parseInt(deliveries[index]["noball_runs"]) + parseInt(deliveries[index]["batsman_runs"]);
+
 
             }
             else {
-                if (deliveries[i]["noball_runs"] == "0" && deliveries[i]["noball_runs"] == "0") {
-                    bowlersStats[deliveries[i].bowler]["bowls"] += 1;
+
+                if (deliveries[index]["noball_runs"] == "0" && deliveries[index]["noball_runs"] == "0") {
+                    bowlersStats[deliveries[index].bowler]["bowls"] += 1;
                 }
-                bowlersStats[deliveries[i].bowler]["runs"] += parseInt(deliveries[i]["wide_runs"]) + parseInt(deliveries[i]["noball_runs"]) + parseInt(deliveries[i]["batsman_runs"]);
+                bowlersStats[deliveries[index].bowler]["runs"] += parseInt(deliveries[index]["wide_runs"]) + parseInt(deliveries[index]["noball_runs"]) + parseInt(deliveries[index]["batsman_runs"]);
+
             }
 
         }
     }
 
-    // calculating economy of all the bowlers
 
     for (let bowler in bowlersStats) {
 
@@ -65,9 +74,9 @@ function top10EconomicalBowlers(matches, deliveries) {
 
 
 
-    fs.writeFile('./src/public/output/top10EconomicalBowlers.json', JSON.stringify(top10Bowlers, null, 4), 'utf-8', (err) => {
-        if (err) {
-            console.log(err);
+    fs.writeFile('./src/public/output/top10EconomicalBowlers.json', JSON.stringify(top10Bowlers, null, 4), 'utf-8', (error) => {
+        if (error) {
+            console.log(error);
         }
     });
 
