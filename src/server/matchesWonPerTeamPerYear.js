@@ -1,31 +1,32 @@
 const fs = require('fs');
 
 function matchesWonPerTeamPerYear(matches) {
-    const result = {};
+    const matchesWon = {};
+    
     for (let i = 0; i < matches.length; i++) {
 
         if (matches[i].result == 'normal') {
 
-            if (result[matches[i].winner] == undefined) {
+            if (matchesWon[matches[i].winner] == undefined) {
 
-                result[matches[i].winner] = {};
-                result[matches[i].winner][matches[i].season] = 1;
+                matchesWon[matches[i].winner] = {};
+                matchesWon[matches[i].winner][matches[i].season] = 1;
 
             }
-            else if (result[matches[i].winner][matches[i].season] == undefined) {
+            else if (matchesWon[matches[i].winner][matches[i].season] == undefined) {
 
-                result[matches[i].winner][matches[i].season] = 1;
+                matchesWon[matches[i].winner][matches[i].season] = 1;
 
             }
             else {
-                result[matches[i].winner][matches[i].season] += 1;
+                matchesWon[matches[i].winner][matches[i].season] += 1;
             }
 
         }
 
     }
     
-    fs.writeFile('./src/public/output/matchesWonPerTeamPerYear.json', JSON.stringify(result, null, 4), 'utf-8', (err) => {
+    fs.writeFile('./src/public/output/matchesWonPerTeamPerYear.json', JSON.stringify(matchesWon, null, 4), 'utf-8', (err) => {
         if (err) {
             console.log(err);
         }
