@@ -15,23 +15,25 @@ function extraRunsPerTeam2016(matches, deliveries) {
     }
     const idsYear2016 = match_id2016();
 
-    const result = {};
+    const extraRuns = {};
+
     for (let i = 0; i < deliveries.length; i++) {
         if (idsYear2016.has(deliveries[i]["match_id"])) {
 
-            if (result[deliveries[i]["bowling_team"]] == undefined) {
-                result[deliveries[i]["bowling_team"]] = deliveries[i]["extra_runs"];
+            if (extraRuns[deliveries[i]["bowling_team"]] == undefined) {
+                extraRuns[deliveries[i]["bowling_team"]] = deliveries[i]["extra_runs"];
 
             }
             else {
 
-                result[deliveries[i]["bowling_team"]] = parseInt(deliveries[i]["extra_runs"]) + parseInt(result[deliveries[i]["bowling_team"]]);
+                extraRuns[deliveries[i]["bowling_team"]] = parseInt(deliveries[i]["extra_runs"]) + parseInt(extraRuns[deliveries[i]["bowling_team"]]);
 
             }
 
         }
     }
-    fs.writeFileSync('./src/public/output/extraRunsPerTeam2016.json', JSON.stringify(result,null,4), 'utf-8', (err)=> {
+
+    fs.writeFileSync('./src/public/output/extraRunsPerTeam2016.json', JSON.stringify(extraRuns,null,4), 'utf-8', (err)=> {
         if(err) {
             console.log(err);
         }
