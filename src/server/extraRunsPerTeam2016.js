@@ -1,41 +1,42 @@
 const fs = require('fs');
+
 function extraRunsPerTeam2016(matches, deliveries) {
 
-    function match_id2016() {
+    function matchId2016() {
         const idsYear2016 = new Set();
 
-        for (let i = 0; i < matches.length; i++) {
+        for (let index = 0; index < matches.length; index++) {
 
-
-            if (matches[i].season == '2016') {
-                idsYear2016.add(matches[i]["id"]);
+            if (matches[index].season == '2016') {
+                idsYear2016.add(matches[index]["id"]);
             }
         }
         return idsYear2016;
     }
-    const idsYear2016 = match_id2016();
+    const idsYear2016 = matchId2016();
 
     const extraRuns = {};
 
-    for (let i = 0; i < deliveries.length; i++) {
-        if (idsYear2016.has(deliveries[i]["match_id"])) {
+    for (let index = 0; index < deliveries.length; index++) {
 
-            if (extraRuns[deliveries[i]["bowling_team"]] == undefined) {
-                extraRuns[deliveries[i]["bowling_team"]] = deliveries[i]["extra_runs"];
+        if (idsYear2016.has(deliveries[index]["match_id"])) {
+
+            if (extraRuns[deliveries[index]["bowling_team"]] == undefined) {
+                extraRuns[deliveries[index]["bowling_team"]] = deliveries[index]["extra_runs"];
 
             }
             else {
 
-                extraRuns[deliveries[i]["bowling_team"]] = parseInt(deliveries[i]["extra_runs"]) + parseInt(extraRuns[deliveries[i]["bowling_team"]]);
+                extraRuns[deliveries[index]["bowling_team"]] = parseInt(deliveries[index]["extra_runs"]) + parseInt(extraRuns[deliveries[index]["bowling_team"]]);
 
             }
 
         }
     }
 
-    fs.writeFileSync('./src/public/output/extraRunsPerTeam2016.json', JSON.stringify(extraRuns,null,4), 'utf-8', (err)=> {
-        if(err) {
-            console.log(err);
+    fs.writeFile('./src/public/output/extraRunsPerTeam2016.json', JSON.stringify(extraRuns, null, 4), 'utf-8', (error) => {
+        if (error) {
+            console.log(error);
         }
     });
 
