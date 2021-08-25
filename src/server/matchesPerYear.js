@@ -1,19 +1,23 @@
 const fs = require('fs');
 
 function matchesPerYear(matches) {
-    const noOfMatches = {};
-    for (let i = 0; i < matches.length; i++) {
-        if (noOfMatches[matches[i].season] == undefined) {
-            noOfMatches[matches[i].season] = 1;
+
+    const matchesPerYear = {};
+
+    for (let index = 0; index < matches.length; index++) {
+
+        if (matchesPerYear[matches[index].season] == undefined) {
+            matchesPerYear[matches[index].season] = 1;
         }
         else {
-            noOfMatches[matches[i].season] += 1;
+            matchesPerYear[matches[index].season] += 1;
         }
+
     }
 
-    fs.writeFile('./src/public/output/matchesPerYear.json', JSON.stringify(noOfMatches, null, 4), 'utf-8', (err) => {
-        if (err) {
-            console.log(err);
+       fs.writeFile('./src/public/output/matchesPerYear.json', JSON.stringify(matchesPerYear, null, 4), 'utf-8', (error) => {
+        if (error) {
+            console.log(error);
         }
     });
 }
