@@ -21,6 +21,7 @@ function iplFunctions(matches, deliveries) {
     ipl.matchesWonPerTeamPerYear(matches);
     ipl.extraRunsPerTeam2016(matches, deliveries);
     ipl.top10EconomicalBowlers(matches, deliveries);
+    ipl.timesTeamWonTossAndMatch(matches);
 }
 
 
