@@ -23,6 +23,7 @@ function iplFunctions(matches, deliveries) {
     ipl.top10EconomicalBowlers(matches, deliveries);
     ipl.timesTeamWonTossAndMatch(matches);
     ipl.mostPlayerOfMatchAwardsPerSeason(matches);
+    ipl.bestBowlerInSuperOvers(deliveries);
 
 }
 
