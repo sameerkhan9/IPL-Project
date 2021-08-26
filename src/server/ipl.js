@@ -3,6 +3,7 @@ const matchesWonPerTeamPerYear = require('./matchesWonPerTeamPerYear.js');
 const extraRunsPerTeam2016 = require('./extraRunsPerTeam2016');
 const top10EconomicalBowlers = require('./top10EconomicalBowlers.js');
 const timesTeamWonTossAndMatch = require('./timesTeamWonTossAndMatch.js');
+const mostPlayerOfMatchAwardsPerSeason = require('./mostPlayerOfMatchAwards.js');
 
 
 
@@ -11,7 +12,8 @@ module.exports = {
     matchesPerYear,
     matchesWonPerTeamPerYear,
     extraRunsPerTeam2016,
-    timesTeamWonTossAndMatch
+    timesTeamWonTossAndMatch,
+    mostPlayerOfMatchAwardsPerSeason
 
 };
 
