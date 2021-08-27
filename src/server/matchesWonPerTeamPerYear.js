@@ -27,7 +27,7 @@ function matchesWonPerTeamPerYear(matches) {
 
     }
     
-    fs.writeFile('./src/public/output/matchesWonPerTeamPerYearPerTeamPerYear.json', JSON.stringify(matchesWonPerTeamPerYear, null, 4), 'utf-8', (error) => {
+    fs.writeFile('./src/public/output/matchesWonPerTeamPerYear.json', JSON.stringify(matchesWonPerTeamPerYear, null, 4), 'utf-8', (error) => {
         if (error) {
             console.log(error);
         }
