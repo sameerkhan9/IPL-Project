@@ -24,6 +24,7 @@ function iplFunctions(matches, deliveries) {
     ipl.timesTeamWonTossAndMatch(matches);
     ipl.mostPlayerOfMatchAwardsPerSeason(matches);
     ipl.bestBowlerInSuperOvers(deliveries);
+    ipl.strikeRatePerSeason(matches, deliveries);
 
 }
 
