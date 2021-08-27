@@ -5,6 +5,8 @@ const top10EconomicalBowlers = require('./top10EconomicalBowlers.js');
 const timesTeamWonTossAndMatch = require('./timesTeamWonTossAndMatch.js');
 const mostPlayerOfMatchAwardsPerSeason = require('./mostPlayerOfMatchAwards.js');
 const bestBowlerInSuperOvers = require('./bestBowlerInSuperOvers.js');
+const strikeRatePerSeason = require('./strikeRatePerSeason.js');
+
 
 
 
@@ -15,7 +17,8 @@ module.exports = {
     extraRunsPerTeam2016,
     timesTeamWonTossAndMatch,
     mostPlayerOfMatchAwardsPerSeason,
-    bestBowlerInSuperOvers
+    bestBowlerInSuperOvers,
+    strikeRatePerSeason
 
 };
 
