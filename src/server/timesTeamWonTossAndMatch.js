@@ -20,6 +20,7 @@ function timesTeamWonTossAndMatch(matches) {
             }
 
         }
+    }
 
         fs.writeFile('./src/public/output/timesTeamWonTossAndMatch.json', JSON.stringify(timesTeamWonTossAndMatch, null, 4), 'utf-8', (error) => {
             if (error) {
@@ -27,7 +28,7 @@ function timesTeamWonTossAndMatch(matches) {
             }
         });
 
-    }
 }
+
 
 module.exports = timesTeamWonTossAndMatch;
